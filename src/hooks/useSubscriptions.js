@@ -76,11 +76,15 @@ export const useSubscriptions = () => {
 
 
     const rawTotalMonthly = subscriptions.reduce((acc, s) => {
-        return acc + (s.cycle === 'monthly' ? s.price : s.price / 12);
+        if (s.cycle === 'monthly') return acc + s.price;
+        if (s.cycle === 'quarterly') return acc + (s.price / 3);
+        return acc + (s.price / 12);
     }, 0);
     
     const rawTotalYearly = subscriptions.reduce((acc, s) => {
-        return acc + (s.cycle === 'monthly' ? s.price * 12 : s.price);
+        if (s.cycle === 'monthly') return acc + (s.price * 12);
+        if (s.cycle === 'quarterly') return acc + (s.price * 4);
+        return acc + s.price;
     }, 0);
 
     const card = CREDIT_CARDS.find(c => c.id === selectedCardId) || CREDIT_CARDS[0];

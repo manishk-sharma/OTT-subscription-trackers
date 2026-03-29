@@ -6,7 +6,7 @@ const BundleRecommendation = ({ subscriptions }) => {
     const standardSubs = subscriptions.map(s => ({
         ...s,
         normalizedName: s.name.toLowerCase().replace(/\s+/g, ''),
-        monthlyCost: s.cycle === 'monthly' ? s.price : s.price / 12
+        monthlyCost: s.cycle === 'monthly' ? s.price : (s.cycle === 'quarterly' ? s.price / 3 : s.price / 12)
     }));
 
     // Target services for Tata Play Binge Mega

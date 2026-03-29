@@ -128,6 +128,7 @@ const AddSubscriptionModal = ({ isOpen, onClose, onSave, initialData }) => {
                                     onChange={(e) => setFormData({ ...formData, cycle: e.target.value })}
                                 >
                                     <option value="monthly">Monthly</option>
+                                    <option value="quarterly">3 Months (Quarterly)</option>
                                     <option value="yearly">Yearly</option>
                                 </select>
                             </div>

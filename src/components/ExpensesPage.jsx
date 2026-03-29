@@ -50,14 +50,16 @@ const ExpensesPage = () => {
 
     const chartData = useMemo(() => {
         const totalMonthly = subscriptions.reduce((acc, s) => {
-            return acc + (s.cycle === 'monthly' ? s.price : s.price / 12);
+            if (s.cycle === 'monthly') return acc + s.price;
+            if (s.cycle === 'quarterly') return acc + (s.price / 3);
+            return acc + (s.price / 12);
         }, 0);
 
         if (totalMonthly === 0) return [];
 
         let cumulativeAngle = 0;
         return subscriptions.map((sub, i) => {
-            const monthlyCost = sub.cycle === 'monthly' ? sub.price : sub.price / 12;
+            const monthlyCost = sub.cycle === 'monthly' ? sub.price : (sub.cycle === 'quarterly' ? sub.price / 3 : sub.price / 12);
             const daysRemaining = Math.max(0, Math.ceil((new Date(sub.nextRenewal) - new Date()) / (1000 * 60 * 60 * 24)));
             const percentage = (monthlyCost / totalMonthly) * 100;
             const angle = (percentage / 100) * 360;
@@ -257,7 +259,9 @@ const ExpensesPage = () => {
                                         <ServiceIcon name={item.name} color={item.color} size={28} />
                                         <div className="row-name-group">
                                             <span className="row-name">{item.name}</span>
-                                            <span className="row-cycle">{item.cycle === 'monthly' ? 'Monthly' : 'Yearly'}</span>
+                                            <span className="row-cycle">
+                                                {item.cycle === 'monthly' ? 'Monthly' : (item.cycle === 'quarterly' ? 'Quarterly' : 'Yearly')}
+                                            </span>
                                         </div>
                                     </div>
                                     <div className="row-right">
