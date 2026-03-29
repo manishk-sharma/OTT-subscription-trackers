@@ -34,9 +34,9 @@ function getWatchUrl(name) {
 
 const SubscriptionCard = ({ sub, onDelete, onEdit }) => {
     const daysRemaining = Math.max(0, Math.ceil((new Date(sub.nextRenewal) - new Date()) / (1000 * 60 * 60 * 24)));
-    const totalDays = sub.cycle === 'monthly' ? 30 : 365;
+    const totalDays = sub.cycle === 'monthly' ? 30 : (sub.cycle === 'quarterly' ? 90 : 365);
     const percentageUsed = Math.min(100, ((totalDays - daysRemaining) / totalDays) * 100);
-    const monthlyEquiv = sub.cycle === 'yearly' ? (sub.price / 12).toFixed(0) : null;
+    const monthlyEquiv = sub.cycle === 'monthly' ? null : (sub.cycle === 'quarterly' ? (sub.price / 3).toFixed(0) : (sub.price / 12).toFixed(0));
     const urgencyColor = (percentageUsed >= 85 || daysRemaining <= 3) ? '#ff3b30' : (percentageUsed >= 60 || daysRemaining <= 10) ? '#ffcc00' : sub.color;
     const isImminent = daysRemaining <= 1;
 
@@ -51,7 +51,7 @@ const SubscriptionCard = ({ sub, onDelete, onEdit }) => {
                     <h3>{sub.name}</h3>
                     <p>
                         <span className={`cycle-badge ${sub.cycle}`}>
-                            {sub.cycle === 'monthly' ? 'Monthly' : 'Yearly'}
+                            {sub.cycle === 'monthly' ? 'Monthly' : (sub.cycle === 'quarterly' ? 'Quarterly' : 'Yearly')}
                         </span>
                     </p>
                 </div>
@@ -69,7 +69,7 @@ const SubscriptionCard = ({ sub, onDelete, onEdit }) => {
                 <div className="price-tag">
                     <span className="currency">₹</span>
                     <span className="amount">{sub.price.toLocaleString('en-IN')}</span>
-                    <span className="price-period">/{sub.cycle === 'monthly' ? 'mo' : 'yr'}</span>
+                    <span className="price-period">/{sub.cycle === 'monthly' ? 'mo' : (sub.cycle === 'quarterly' ? 'qtr' : 'yr')}</span>
                 </div>
                 {monthlyEquiv && (
                     <span className="monthly-equiv">≈ ₹{monthlyEquiv}/mo</span>
@@ -155,6 +155,7 @@ const SubscriptionCard = ({ sub, onDelete, onEdit }) => {
                     letter-spacing: 0.5px;
                 }
                 .cycle-badge.monthly { background: rgba(0, 255, 136, 0.1); color: #00ff88; }
+                .cycle-badge.quarterly { background: rgba(124, 77, 255, 0.15); color: #7c4dff; }
                 .cycle-badge.yearly  { background: rgba(255, 179, 0, 0.12); color: #ffb300; }
                 .card-actions {
                     position: absolute;

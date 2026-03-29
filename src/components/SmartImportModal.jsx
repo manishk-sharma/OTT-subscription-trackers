@@ -41,7 +41,7 @@ const DetectedCard = ({ sub, selected, onToggle }) => (
                 {sub.bundled ? (
                     <span className="bundled-tag">🎁 Bundled with {sub.carrier}</span>
                 ) : (
-                    <>₹{sub.price} / {sub.cycle === 'monthly' ? 'mo' : 'yr'}</>
+                    <>₹{sub.price} / {sub.cycle === 'monthly' ? 'mo' : (sub.cycle === 'quarterly' ? 'qtr' : 'yr')}</>
                 )}
             </span>
             {sub.source === 'gmail' && (

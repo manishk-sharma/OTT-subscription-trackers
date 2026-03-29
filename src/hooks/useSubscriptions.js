@@ -15,7 +15,9 @@ export const CREDIT_CARDS = [
 export const INDIAN_OTT_PRESETS = [
     { name: 'JioHotstar', color: '#1f5dbf', icon: '🔵', defaultPrice: 299, cycle: 'monthly' },
     { name: 'Sony LIV', color: '#e8171f', icon: '🔴', defaultPrice: 299, cycle: 'monthly' },
+    { name: 'Sony LIV (Q)', color: '#e8171f', icon: '🔴', defaultPrice: 699, cycle: 'quarterly' },
     { name: 'Zee5', color: '#7b2d8b', icon: '🟣', defaultPrice: 99, cycle: 'monthly' },
+    { name: 'Zee5 (Q)', color: '#7b2d8b', icon: '🟣', defaultPrice: 299, cycle: 'quarterly' },
     { name: 'YouTube Premium', color: '#FF0000', icon: '▶️', defaultPrice: 189, cycle: 'monthly' },
     { name: 'Google One', color: '#1a73e8', icon: '🔷', defaultPrice: 130, cycle: 'monthly' },
     { name: 'Netflix', color: '#E50914', icon: '🎬', defaultPrice: 499, cycle: 'monthly' },
@@ -37,7 +39,7 @@ export const useSubscriptions = () => {
         } else {
             const mock = [
                 { id: 1, name: 'JioHotstar', price: 299, cycle: 'monthly', nextRenewal: '2026-04-20', color: '#1f5dbf', icon: '🔵' },
-                { id: 2, name: 'Sony LIV', price: 299, cycle: 'monthly', nextRenewal: '2026-04-12', color: '#e8171f', icon: '🔴' },
+                { id: 2, name: 'Sony LIV', price: 699, cycle: 'quarterly', nextRenewal: '2026-06-12', color: '#e8171f', icon: '🔴' },
                 { id: 3, name: 'Zee5', price: 999, cycle: 'yearly', nextRenewal: '2026-12-01', color: '#7b2d8b', icon: '🟣' },
                 { id: 4, name: 'YouTube Premium', price: 189, cycle: 'monthly', nextRenewal: '2026-04-08', color: '#FF0000', icon: '▶️' },
                 { id: 5, name: 'Google One', price: 1300, cycle: 'yearly', nextRenewal: '2027-02-14', color: '#1a73e8', icon: '🔷' },
