@@ -38,12 +38,12 @@ export const useSubscriptions = () => {
             setSubscriptions(JSON.parse(saved));
         } else {
             const mock = [
-                { id: 1, name: 'JioHotstar', price: 299, cycle: 'monthly', nextRenewal: '2026-04-20', color: '#1f5dbf', icon: '🔵' },
-                { id: 2, name: 'Sony LIV', price: 699, cycle: 'quarterly', nextRenewal: '2026-06-12', color: '#e8171f', icon: '🔴' },
+                { id: 1, name: 'JioHotstar', price: 299, cycle: 'monthly', nextRenewal: '2026-04-28', color: '#1f5dbf', icon: '🔵' },
+                { id: 2, name: 'Sony LIV', price: 699, cycle: 'quarterly', nextRenewal: '2026-04-05', color: '#e8171f', icon: '🔴' },
                 { id: 3, name: 'Zee5', price: 999, cycle: 'yearly', nextRenewal: '2026-12-01', color: '#7b2d8b', icon: '🟣' },
-                { id: 4, name: 'YouTube Premium', price: 189, cycle: 'monthly', nextRenewal: '2026-04-08', color: '#FF0000', icon: '▶️' },
+                { id: 4, name: 'YouTube Premium', price: 189, cycle: 'monthly', nextRenewal: '2026-03-31', color: '#FF0000', icon: '▶️' },
                 { id: 5, name: 'Google One', price: 1300, cycle: 'yearly', nextRenewal: '2027-02-14', color: '#1a73e8', icon: '🔷' },
-                { id: 6, name: 'Netflix', price: 499, cycle: 'monthly', nextRenewal: '2026-04-25', color: '#E50914', icon: '🎬' },
+                { id: 6, name: 'Netflix', price: 499, cycle: 'monthly', nextRenewal: '2026-04-12', color: '#E50914', icon: '🎬' },
             ];
             setSubscriptions(mock);
             localStorage.setItem(STORAGE_KEY, JSON.stringify(mock));
