@@ -4,6 +4,7 @@ import SubscriptionCard from './SubscriptionCard';
 import AddSubscriptionModal from './AddSubscriptionModal';
 import SmartImportModal from './SmartImportModal';
 import BundleRecommendation from './BundleRecommendation';
+import DashboardSkeleton from './DashboardSkeleton';
 import { useSubscriptions, CREDIT_CARDS } from '../hooks/useSubscriptions';
 
 const Dashboard = () => {
@@ -37,7 +38,7 @@ const Dashboard = () => {
         setTimeout(() => setToast(null), 4000);
     };
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <DashboardSkeleton />;
 
     return (
         <div className="dashboard-wrapper fade-in">

@@ -93,6 +93,12 @@ h1, h2, h3, h4 {
   animation: fadeIn 0.8s ease-out forwards;
 }
 
+@keyframes skeletonShimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
 /* Utils */
 .flex-between {
   display: flex;
